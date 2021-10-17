@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   def index
-    @post = Post.new
     @posts = Post.all
   end
 
@@ -9,11 +8,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
       @post = Post.new(post_params)
   if  @post.save
       flash[:notice] = 'Post was successfully created.'
-      redirect_to post_path(@post)
+      redirect_to posts_path
   else
       @posts = Post.all
       render :index
@@ -52,4 +55,3 @@ end
 
 
 
-end

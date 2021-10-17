@@ -1,0 +1,31 @@
+<div class="col-md-8 offset-md-1">
+      <h2>投稿一覧</h2>
+      <table class="table">
+  <thead>
+
+    <tr>
+      <th>title</th>
+      <th>body</th>
+      <th>image</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% @posts.each do |post| %>
+
+  <tr>
+    <th class="タイトル"><%= post.title %></th>
+    <th class="本文"><%= post.body %></th>
+    <th>
+      <%= attachment_image_tag post, :image, :fill, 40, 40, fallback: "no_image.jpg"%>
+    </th>
+
+    <th>
+
+       <% end %>
+
+  </tbody>
+</table>
+
+    </div>
