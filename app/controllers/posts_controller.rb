@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    #@user = post.user
   end
 
   def show
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
 
   def create
       @post = Post.new(post_params)
+      @post.user_id = current_user.id
   if  @post.save
       flash[:notice] = 'Post was successfully created.'
       redirect_to posts_path
@@ -31,7 +33,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
   if  @post.update(post_params)
       flash[:notice] = 'Post was successfully updated.'
-      redirect_to post_path(@post.id)
+      redirect_to posts_path
   else
       render :edit
   end

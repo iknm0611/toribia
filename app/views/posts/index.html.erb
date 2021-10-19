@@ -1,31 +1,31 @@
 <div class="col-md-8 offset-md-1">
       <h2>投稿一覧</h2>
-      <table class="table">
-  <thead>
 
-    <tr>
-      <th>title</th>
-      <th>body</th>
-      <th>image</th>
-    </tr>
-  </thead>
 
-  <tbody>
 
   <% @posts.each do |post| %>
 
-  <tr>
-    <th class="タイトル"><%= post.title %></th>
-    <th class="本文"><%= post.body %></th>
-    <th>
-      <%= attachment_image_tag post, :image, :fill, 40, 40, fallback: "no_image.jpg"%>
-    </th>
+  	<tr>
+    <!--th class="post.user.user_name"><%#=link_to(post.user.user_name, user_path(post.user_id)) %></th-->
+      <td class="タイトル"><%= post.title %></td></br>
+      <td class="本文"><%= post.body %></td></br>
+      <td>
+        <%= attachment_image_tag post, :image, :fill, 40, 40, fallback: "no_image.jpg"%></br>
+      </td>
+      <td>
+        <%# if @user.id == current_user.id %>
+        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-success edit_post_#{post.id}" %>
+        <%# end %>
+      </td>
+      <td>
+        <%# if @user.id == current_user.id %>
+        <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{post.id}"%>
+        <%# end %>
+      </td>
+    </tr>
 
-    <th>
+  <% end %>
 
-       <% end %>
 
-  </tbody>
-</table>
 
     </div>
