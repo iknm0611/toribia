@@ -2,24 +2,20 @@
 <div class='container'>
 <div class='row'>
 
+
   <div class='col-md-3'>
     <%= render 'users/info' %>
-    </div>
+  </div>
 
   <div class="col-md-8 offset-md-1">
-    <h2>ユーザー検索</h2>
-
-    <div class="search-form">
-      <%= form_with url: user_search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-      <% end %>
-    </div>
+    <h2>フォローされてるユーザー一覧</h2>
+    <% if @users.exists? %>
 
     <% @users.each do |user| %>
-      <td>
-        <%= attachment_image_tag(user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
-        <%= user.name %>
+
+        <td>
+          <%= attachment_image_tag(user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
+          <%= user.name %>
 
         <% if user.id != current_user.id %>
         <% if current_user.is_followed_by?(user) %>
@@ -30,15 +26,14 @@
           <% end %>
         <% end %>
         <% end %>
-
-      </td></br>
-
-        <th><%= user.introduction %></th></br>
-
+      </td>
+      </tr>
     <% end %>
 
-  </div>
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+
+    </div>
 </div>
 </div>
-
-

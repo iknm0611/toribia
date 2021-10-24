@@ -1,0 +1,19 @@
+
+    <tr><%= attachment_image_tag(@user, :image, :fill, 40, 40, fallback: "no_image.jpg") %></tr>
+    <tr><%= @user.name %></tr></br>
+
+    <tr>
+      <th>フォロー</th>
+      <th><%= link_to @user.followings.count, user_followings_path(@user.id) %></th>
+    </tr>
+    <tr>
+      <th>フォロワー</th>
+      <th><%= link_to @user.followers.count, user_followers_path(@user.id) %></th>
+    </tr></br>
+
+    <tr><%= link_to 'プロフィール',user_path(@user) %></tr></br>
+    <tr><%= link_to '投稿一覧',posts_path %></tr></br>
+    <tr><%= link_to 'ユーザー検索',users_path %></tr></br>
+    <tr><%= link_to 'いいね一覧',favorites_path(@user.id) %></tr>
+
+

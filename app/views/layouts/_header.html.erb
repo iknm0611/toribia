@@ -1,22 +1,22 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+
+<header class="border-bottom">
+  <nav class="navbar navbar-expand-lg px-4 pt-4 pb-3" style="background-color:#CCFFFF">
+    <div class="container-fluid">
       <a class="navbar-brand" href="/"><span>トリビアの滝</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li><%= link_to ' Home',posts_path %></li>
-          <li><%= link_to ' logout', destroy_user_session_path, method: :delete %></li>
-        <% else %>
+
+     <% if user_signed_in? %>
+
+       <ul class="nav navbar-nav">
+         <li><%= link_to ' Home',posts_path %></li>
+         <li><%= link_to ' logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
           <li><%= link_to ' Home',posts_path %></li>
           <li><%= link_to ' sign up', new_user_registration_path %></li>
           <li><%= link_to ' login', new_user_session_path %></li>
-        <% end %>
-        </ul>
-      </div>
+      <% end %>
     </div>
   </nav>
 </header>
+
+
+

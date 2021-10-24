@@ -1,12 +1,20 @@
 class PostsController < ApplicationController
 
+  before_action :ensure_user, only: [:edit, :update, :destroy]
+
   def index
     @posts = Post.all
-    #@user = post.user
+    @user = current_user
+    @favorite = Favorite.new
   end
 
   def show
+    @user = current_user
     @post = Post.find(params[:id])
+    @favorite = Favorite.new
+    @comment = Comment.new
+    @comments = @post.comments
+
   end
 
   def new
@@ -29,6 +37,13 @@ class PostsController < ApplicationController
      @post = Post.find(params[:id])
   end
 
+  def search
+      @user = current_user
+      @posts = Post.search(params[:keyword])
+      @keyword = params[:keyword]
+      render "index"
+  end
+
   def update
       @post = Post.find(params[:id])
   if  @post.update(post_params)
@@ -48,6 +63,12 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def ensure_user
+    @posts = current_user.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to new_post_path unless @post
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :image)

@@ -1,0 +1,43 @@
+ <% @posts.each do |post| %>
+
+  	<tr>
+  	  <td>
+  	    <%= attachment_image_tag(post.user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
+        <%= post.user.name %>
+
+        <% if post.user.id != current_user.id %>
+        <% if current_user.is_followed_by?(post.user) %>
+          <%= link_to user_relationships_path(post.user.id), method: :delete do %>フォロー外す
+          <% end %>
+        <% else %>
+          <%= link_to user_relationships_path(post.user.id), method: :post do %>フォローする
+          <% end %>
+        <% end %>
+        <% end %>
+        </br>
+
+      </td>
+      <td><%= link_to post.title, post_path(post), class: "post_#{post.id}" %></td></br>
+      <td class="本文"><%= post.body %></td></br>
+      <td>
+        <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg"%></br>
+      </td>
+
+      <% if post.user == current_user %>
+      <td>
+        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-success edit_post_#{post.id}" %>
+      </td>
+      <td>
+        <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{post.id}"%>
+      </td></br>
+      <% end %>
+
+      <td>
+        <div id="favorites_buttons_<%= post.id %>">
+          <%= render 'favorites/favorite',post: post %>
+        </div>
+      </td></br>
+
+    </tr>
+
+  <% end %>

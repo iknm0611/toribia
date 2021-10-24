@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_052807) do
+ActiveRecord::Schema.define(version: 2021_10_23_120452) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_10_16_052807) do
     t.integer "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "follower_id"
+    t.integer "followed_id"
   end
 
   create_table "tag_maps", force: :cascade do |t|
