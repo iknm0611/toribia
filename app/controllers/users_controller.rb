@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     render "index"
   end
 
+  def awin
+    @user =current_user
+  end
+
   def update
     @posts = Post.all
     @user = current_user

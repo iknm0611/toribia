@@ -1,3 +1,89 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar {
+  height: 90px;
+}
+
+.container {
+
+}
+
+.header-main-title {
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  padding: 10px 4% 0px;
+  height: 100px;
+  background-color: #DDFFFF;
+
+}
+
+.header-bottom {
+  width: 100%;
+  height: 100px;
+  height: 70px;
+  background-color: pink;
+}
+
+.header-title {
+  width: 10%;
+  height: 10%;
+}
+
+.header-sub-title {
+  height: 40px;
+  font-size: 17px;
+  padding: 10px 0 10px 20px
+}
+
+
+
+li {
+   margin: 0 0 0 11px;
+   font-size: 14px;
+
+}
+
+html, body {
+  height: 100%;
+}
+
+.main-container-wrapper {
+  display: flex;
+  padding-top: 180px;
+  flex-direction: column;
+  height: 100%;
+  background-image: url("/images/sky_00199.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+hr {
+  height: 15px !important;
+  background-color: #DDFFFF !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid #FFF !important;
+  color: #FFF !important;
+}
+
+.main-top {
+  height: 80px;
+  font-size: 50px;
+  color: #FFF;
+}
+
+.sub-top {
+  height: 30px;
+  color: #FFF;
+}

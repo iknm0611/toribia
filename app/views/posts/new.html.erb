@@ -1,3 +1,13 @@
+
+<div class='container'>
+<div class='row'>
+
+  <div class='col-md-3'>
+    <%= render 'users/info' %>
+  </div>
+
+<div class="col-md-8 offset-md-1">
+
 <%= form_with model: @post, local:true do |f| %>
 
   <div>
@@ -18,3 +28,6 @@
   <%= f.submit '投稿' %>
 
 <% end %>
+
+</div>
+</div>

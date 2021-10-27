@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
    get 'search' => 'posts#search'
+   get 'sort' => 'posts#sort'
    resources :posts do
     resources :comments, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-
+  get '/users/awin' => 'users#awin'
   get '/users/search' => 'users#search', as: 'user_search'
   resources :users,only: [:show,:index,:edit,:update] do
       member do
@@ -19,8 +20,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create,:destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
-    # get 'search' => 'users#search'
+
   end
+
 
 
 

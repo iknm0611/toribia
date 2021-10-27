@@ -2,8 +2,6 @@
 <div class='container'>
 <div class='row'>
 
-
-
   <div class='col-md-3'>
     <%= render 'users/info' %>
   </div>
@@ -17,8 +15,14 @@
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "検索" %>
         <% end %>
+      </div></br>
+
+      <div>
+        <%= form_with model: @post, url: sort_path, method: :get, local: true do |form| %>
+        <%= form.select :sort, [ ['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順', 'likes'],['いいねが少ない順', 'dislikes'],] %>
+        <%= form.submit "並べ替え" %>
+        <% end %>
       </div>
-      </br>
 
      <%= render 'posts/index' %>
 

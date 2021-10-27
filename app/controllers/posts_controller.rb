@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @user = current_user
   end
 
   def create
@@ -42,6 +43,12 @@ class PostsController < ApplicationController
       @posts = Post.search(params[:keyword])
       @keyword = params[:keyword]
       render "index"
+  end
+
+  def sort
+     @user = current_user
+     @posts = Post.sort(params[:sort])
+     render "index"
   end
 
   def update
