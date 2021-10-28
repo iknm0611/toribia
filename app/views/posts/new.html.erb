@@ -10,22 +10,27 @@
 
 <%= form_with model: @post, local:true do |f| %>
 
-  <div>
+<h2>新規投稿</h2></br>
+
+<div class="new-form">
+  <div class="new-title">
   <label>タイトル</label></br>
   <%= f.text_field :title %>
   </div>
 
-  <div>
+  <div class="new-body">
   <label>本文</label></br>
   <%= f.text_area :body %>
   </div>
 
-  <div>
-  <label>画像</label>
+  <div class="new-image">
+  <label></label>
   <%= f.attachment_field :image %>
-  </div>
+  </div></br>
 
-  <%= f.submit '投稿' %>
+  <span class="new-submit"><%= f.submit '投稿' %></span>
+
+</div>
 
 <% end %>
 

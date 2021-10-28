@@ -8,21 +8,21 @@
 
 
   <div class="col-md-8 offset-md-1">
-    <h2>投稿一覧</h2>
+    <h2>投稿一覧</h2></br>
 
-      <div class="search-form">
+      <span class="search-form">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "検索" %>
         <% end %>
-      </div></br>
+      </span></br>
 
-      <div>
+      <span>
         <%= form_with model: @post, url: sort_path, method: :get, local: true do |form| %>
         <%= form.select :sort, [ ['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順', 'likes'],['いいねが少ない順', 'dislikes'],] %>
         <%= form.submit "並べ替え" %>
         <% end %>
-      </div>
+      </span></br>
 
      <%= render 'posts/index' %>
 

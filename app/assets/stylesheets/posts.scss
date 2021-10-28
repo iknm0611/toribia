@@ -1,3 +1,52 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.user-name {
+  width: 200px;
+  font-size: 30px;
+  margin: 0 20px 0 20px;
+}
+
+.post-title {
+  height: 40px;
+  font-size: 35px;
+  margin-left: 20px;
+}
+
+.post-body {
+  height: 40px;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.post-image {
+  margin-left : 20px;
+}
+
+.new-form {
+  height: 400px;
+}
+
+.new-title {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.new-body {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.new-image {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.new-submit {
+  margin-left: 120px;
+  font-size: 20px;
+}

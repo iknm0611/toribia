@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   root 'homes#top'
 
-  get '/users/awin' => 'users#awin'
   get '/users/search' => 'users#search', as: 'user_search'
   resources :users,only: [:show,:index,:edit,:update] do
       member do

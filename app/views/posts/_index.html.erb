@@ -1,10 +1,12 @@
  <% @posts.each do |post| %>
 
+  <table>
   	<tr>
   	  <td>
   	    <%= attachment_image_tag(post.user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
-        <%= post.user.name %>
+        <span class="user-name"><%= post.user.name %></span>
 
+        <span class="user-follow">
         <% if post.user.id != current_user.id %>
         <% if current_user.is_followed_by?(post.user) %>
           <%= link_to user_relationships_path(post.user.id), method: :delete do %>フォロー外す
@@ -14,14 +16,18 @@
           <% end %>
         <% end %>
         <% end %>
+        </span>
         </br>
+      </td>
+    </tr>
+  </table>
 
-      </td>
-      <td><%= link_to post.title, post_path(post), class: "post_#{post.id}" %></td></br>
-      <td class="本文"><%= post.body %></td></br>
-      <td>
-        <%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg"%></br>
-      </td>
+
+      <td><%= link_to post.title, post_path(post), class: "post-title post_#{post.id}" %></td></br></br>
+
+      <td><span class="post-body"><%= post.body %></span></td></br></br>
+
+      <td><span class="post-image"><%= attachment_image_tag post, :image, :fill, 100, 100, fallback: "no_image.jpg"%></span></br></br></td>
 
       <% if post.user == current_user %>
       <td>

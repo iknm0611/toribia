@@ -13,9 +13,11 @@
 
     <% @users.each do |user| %>
 
+      <table>
+        <tr>
         <td>
           <%= attachment_image_tag(user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
-          <%= user.name %>
+          <span class="follow-name"><%= user.name %></span>
 
         <% if user.id != current_user.id %>
         <% if current_user.is_followed_by?(user) %>
@@ -26,8 +28,10 @@
           <% end %>
         <% end %>
         <% end %>
-      </td>
-      </tr>
+        </td>
+        </tr>
+      </table></br>
+
     <% end %>
 
   <% else %>

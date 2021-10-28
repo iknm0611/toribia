@@ -7,19 +7,21 @@
     </div>
 
   <div class="col-md-8 offset-md-1">
-    <h2>ユーザー検索</h2>
+    <h2>ユーザー検索</h2></br>
 
     <div class="search-form">
       <%= form_with url: user_search_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: @keyword %>
       <%= f.submit "検索" %>
       <% end %>
-    </div>
+    </div></br>
 
     <% @users.each do |user| %>
-      <td>
-        <%= attachment_image_tag(user, :image, :fill, 40, 40, fallback: "no_image.jpg") %>
-        <%= user.name %>
+      <table>
+        <tr>
+        <td>
+        <%= attachment_image_tag(user, :image, :fill, 80, 80, fallback: "no_image.jpg") %>
+        <%= link_to user.name, user_path(user), class: "follow-name user_#{user.id}" %>
 
         <% if user.id != current_user.id %>
         <% if current_user.is_followed_by?(user) %>
@@ -31,9 +33,11 @@
         <% end %>
         <% end %>
 
-      </td></br>
+      </td>
+        </tr>
+      </table>
 
-        <th><%= user.introduction %></th></br>
+
 
     <% end %>
 
